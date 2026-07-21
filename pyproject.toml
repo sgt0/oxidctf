@@ -1,6 +1,6 @@
 [project]
 name = "vapoursynth-oxidctf"
-version = "0.0.0"
+version = "0.1.0"
 description = "DCT/IDCT frequency suppressor VapourSynth plugin."
 readme = "README.md"
 license = "MPL-2.0"

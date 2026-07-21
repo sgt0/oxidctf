@@ -450,7 +450,7 @@ declare_plugin!(
   c"sgt.oxidctf",
   c"oxidctf",
   c"DCT/IDCT Frequency Suppressor",
-  (0, 0),
+  (0, 1),
   VAPOURSYNTH_API_VERSION,
   0,
   (DctFilter, None)
