@@ -1,7 +1,7 @@
 # oxidctf
 
 oxidctf is a Rust port of
-[HolyWu/VapourSynth-DCTFilter](https://github.com/Mr-Z-2697/VapourSynth-DCTFilter) /
+[HolyWu/VapourSynth-DCTFilter](https://github.com/HolyWu/VapourSynth-DCTFilter) /
 [Mr-Z-2697/VapourSynth-DCTFilter](https://github.com/Mr-Z-2697/VapourSynth-DCTFilter),
 a [VapourSynth](https://www.vapoursynth.com/) plugin that suppresses selected
 frequencies of a clip. For each n x n block it performs a Discrete Cosine
