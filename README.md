@@ -145,15 +145,15 @@ $C B C^{\mathsf{T}}$ becomes an ordinary one-sided product by the
 [Kronecker product](https://en.wikipedia.org/wiki/Kronecker_product)
 $D = C \otimes C$, an $n^2 \times n^2$ matrix that applies $C$ to rows and
 columns at once. Scaling by the factors is multiplication by a diagonal matrix
-$\operatorname{diag}(f)$ whose entries are the flattened grid $M$, and the
+$\mathrm{diag}(f)$ whose entries are the flattened grid $M$, and the
 inverse transform is $D^{\mathsf{T}}$. Chaining the three gives the single
 operator
 
-$$A = D^{\mathsf{T}}\,\operatorname{diag}(f)\,D,\qquad D = C \otimes C,$$
+$$A = D^{\mathsf{T}}\,\mathrm{diag}(f)\,D,\qquad D = C \otimes C,$$
 
 so that filtering a flattened block $x$ is now the lone product $A x$. oxidctf
 builds $A$ during filter creation and stores it. Further note that $A$ is
-symmetric, because $\operatorname{diag}(f)$ is: $A^{\mathsf{T}} = D^{\mathsf{T}}\operatorname{diag}(f)\,D = A$. Symmetry means it makes no difference whether
+symmetric, because $\mathrm{diag}(f)$ is: $A^{\mathsf{T}} = D^{\mathsf{T}}\mathrm{diag}(f)\,D = A$. Symmetry means it makes no difference whether
 blocks are multiplied on the left or the right, which frees the implementation
 to lay the data out in whichever direction is fastest. What I went with was
 storing the blocks as rows, computed as $xA$.
