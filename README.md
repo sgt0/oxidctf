@@ -88,7 +88,7 @@ Now is the point where I have to pull out math notation that I definitely did
 not forget from school. Let's put the cosine recipe for an `n x n` block into a
 single matrix $C$, the DCT matrix. Its entry in row $k$, column $j$ is:
 
-$$C_{k,j} = a_k \cos\!\left(\frac{\pi\,(2j+1)\,k}{2n}\right),\qquad a_0 = \sqrt{\tfrac{1}{n}},\quad a_k = \sqrt{\tfrac{2}{n}}\ \ (k > 0).$$
+$$C_{k,j} = a_k \cos\left(\frac{\pi(2j+1)k}{2n}\right),\qquad a_0 = \sqrt{\tfrac{1}{n}},\quad a_k = \sqrt{\tfrac{2}{n}}\ \ (k > 0).$$
 
 Row $k$ of $C$ is the $k$-th cosine ripple, sampled at the $n$ pixel positions.
 The leading constants $a_k$ are chosen so that $C$ is orthonormal, which is a
@@ -99,13 +99,13 @@ A block, though, is two-dimensional. The transform is applied first along the
 rows and then along the columns, an operation that, for a block $B$, comes out
 as sandwiching $B$ between the matrix and its transpose:
 
-$$F = C\,B\,C^{\mathsf{T}}.$$
+$$F = CBC^{\mathsf{T}}.$$
 
 Here $F$ holds the 64 frequency weights. We scale them by multiplying each
 weight, position for position, by its factor (let's call the grid of factors
 $M$) and then invert the transform to return to pixels:
 
-$$B' = C^{\mathsf{T}}\,(F \odot M)\,C,$$
+$$B' = C^{\mathsf{T}}(F \odot M)C,$$
 
 where $\odot$ denotes entry-by-entry multiplication. When the caller supplies
 only `nsize` factors rather than a full `nsize * nsize` grid, $M$ is built as the
@@ -118,9 +118,9 @@ Read literally, the formula above prescribes, for **every single block** of the
 image, four matrix multiplications and one scaling pass:
 
 - $CB$ — Transform the columns.
-- $(CB)\,C^{\mathsf{T}}$ — Transform the rows, yielding the frequencies $F$.
+- $(CB)C^{\mathsf{T}}$ — Transform the rows, yielding the frequencies $F$.
 - $F \odot M$ — Scale each frequency by its factor.
-- $C^{\mathsf{T}}(\dots)$ and $(\dots)\,C$ — The two multiplications of the inverse.
+- $C^{\mathsf{T}}(\dots)$ and $(\dots)C$ — The two multiplications of the inverse.
 
 If there's anything I've learned from writing VapourSynth plugins, it's that
 every nanosecond of overhead counts. A 1080p plane holds more than 30,000
@@ -149,11 +149,11 @@ $\mathrm{diag}(f)$ whose entries are the flattened grid $M$, and the
 inverse transform is $D^{\mathsf{T}}$. Chaining the three gives the single
 operator
 
-$$A = D^{\mathsf{T}}\,\mathrm{diag}(f)\,D,\qquad D = C \otimes C,$$
+$$A = D^{\mathsf{T}}\mathrm{diag}(f)D,\qquad D = C \otimes C,$$
 
 so that filtering a flattened block $x$ is now the lone product $A x$. oxidctf
 builds $A$ during filter creation and stores it. Further note that $A$ is
-symmetric, because $\mathrm{diag}(f)$ is: $A^{\mathsf{T}} = D^{\mathsf{T}}\mathrm{diag}(f)\,D = A$. Symmetry means it makes no difference whether
+symmetric, because $\mathrm{diag}(f)$ is: $A^{\mathsf{T}} = D^{\mathsf{T}}\mathrm{diag}(f)D = A$. Symmetry means it makes no difference whether
 blocks are multiplied on the left or the right, which frees the implementation
 to lay the data out in whichever direction is fastest. What I went with was
 storing the blocks as rows, computed as $xA$.
