@@ -10,7 +10,7 @@ crate-type = ["cdylib"]
 [dependencies]
 const-str = "=1.1.0"
 ndarray = { version = "=0.17.2", default-features = false, features = ["std", "serde", "rayon", "matrixmultiply-threading", "portable-atomic-critical-section", "approx"] }
-oxiblas-ndarray = { version = "=0.2.1", features = ["parallel", "sparse"] }
+oxiblas-ndarray = { version = "=0.2.2", features = ["parallel", "sparse"] }
 vapours = "=0.2.5"
 vapoursynth4-rs = "=0.4.0"
 
