@@ -587,7 +587,7 @@ dependencies = [
 [[package]]
 name = "vapoursynth4-rs"
 version = "0.4.0"
-source = "git+https://github.com/inflation/vapoursynth4-rs?rev=5685213b75cef2c8ae3e49ed60c71cb7258bc1a5#5685213b75cef2c8ae3e49ed60c71cb7258bc1a5"
+source = "git+https://github.com/inflation/vapoursynth4-rs?rev=3764fcf38a505b704c0982c23c92aa38d245370d#3764fcf38a505b704c0982c23c92aa38d245370d"
 dependencies = [
  "bon",
  "thiserror",
@@ -596,5 +596,5 @@ dependencies = [
 
 [[package]]
 name = "vapoursynth4-sys"
-version = "0.3.1"
-source = "git+https://github.com/inflation/vapoursynth4-rs?rev=5685213b75cef2c8ae3e49ed60c71cb7258bc1a5#5685213b75cef2c8ae3e49ed60c71cb7258bc1a5"
+version = "0.3.2+R73"
+source = "git+https://github.com/inflation/vapoursynth4-rs?rev=3764fcf38a505b704c0982c23c92aa38d245370d#3764fcf38a505b704c0982c23c92aa38d245370d"
