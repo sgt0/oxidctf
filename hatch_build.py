@@ -55,7 +55,7 @@ def get_host_target_triple() -> str:
     raise RuntimeError("Could not determine host target triple from `rustc -vV`")
 
 
-class CustomHook(BuildHookInterface[Any]):
+class CustomHook(BuildHookInterface[Any, Any]):
     target_dir = Path("vapoursynth/plugins/oxidctf")
 
     def initialize(self, version: str, build_data: dict[str, Any]) -> None:
